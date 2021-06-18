@@ -1,44 +1,41 @@
 import { React, useEffect, useState } from "react";
 import { Icon, Menu, Table, Header } from "semantic-ui-react";
-import JobService from "../services/JobService";
+import JobseekerService from "../services/JobseekerService";
 
-export default function Job() {
-
-  const [jobs, setJobs] = useState([]);
+export default function JobseekerList() {
+ 
+  const [jobseekers, setJobseekers] = useState([]);
 
   useEffect(() => {
-    let jobService = new JobService()
-    jobService.getJobs().then(result=>setJobs(result.data.data))
+    let jobseekerService = new JobseekerService()
+    jobseekerService.getJobseekers().then(result=>setJobseekers(result.data.data))
   }, [])
  
-
   return (
     <div>
-      <Header size="medium">Jobs</Header>
+      <Header size="medium">Jobseekers</Header>
       <Table celled>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Job Name</Table.HeaderCell>
-            <Table.HeaderCell># of Employers Needed</Table.HeaderCell>
-            <Table.HeaderCell>City</Table.HeaderCell>
-            <Table.HeaderCell>Job Owner</Table.HeaderCell>
+            <Table.HeaderCell>First Name</Table.HeaderCell>
+            <Table.HeaderCell>Last Name</Table.HeaderCell>
+            <Table.HeaderCell>Birth Year</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
         <Table.Body>
-        {jobs.map((job)=>(
-            <Table.Row key={job.id}>
-            <Table.Cell>{job.jobName}</Table.Cell>
-            <Table.Cell>{job.employeeNumber}</Table.Cell>
-            <Table.Cell>{job.city}</Table.Cell>
-            <Table.Cell>{job.employer.companyName}</Table.Cell>
+          {jobseekers.map((jobseeker)=>(
+            <Table.Row key={jobseeker.id}>
+            <Table.Cell>{jobseeker.firstName}</Table.Cell>
+            <Table.Cell>{jobseeker.lastName}</Table.Cell>
+            <Table.Cell>{jobseeker.birthYear}</Table.Cell>
           </Table.Row>
           ))}   
         </Table.Body>
 
         <Table.Footer>
           <Table.Row>
-            <Table.HeaderCell colSpan="4">
+            <Table.HeaderCell colSpan="3">
               <Menu floated="right" pagination>
                 <Menu.Item as="a" icon>
                   <Icon name="chevron left" />

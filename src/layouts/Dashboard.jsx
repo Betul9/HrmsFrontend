@@ -1,9 +1,11 @@
 import React from "react";
-import Employer from "../pages/Employer";
-import Jobseeker from "../pages/Jobseeker";
-import Job from "../pages/Job";
-import Personnel from "../pages/Personnel";
+import EmployerList from "../pages/EmployerList";
+import JobseekerList from "../pages/JobseekerList";
+import JobList from "../pages/JobList";
+import PersonnelList from "../pages/PersonnelList";
 import { Route } from "react-router";
+import JobAdd from "../pages/JobAdd";
+import JobApprove from "../pages/JobApprove";
 
 export default function Dashboard() {
   return (
@@ -23,11 +25,13 @@ export default function Dashboard() {
           </Grid.Column>
         </Grid.Row>
       </Grid> */}
-      <Route exact path="/" component={Job} />
-      <Route exact path="/jobs" component={Job} />
-      <Route path="/jobseekers" component={Jobseeker} />
-      <Route path="/employers" component={Employer} />
-      <Route path="/personnels" component={Personnel} />
+      <Route exact path="/" component={JobList} />
+      <Route exact path="/jobs" component={JobList} />
+      <Route exact path="/job-add" component={JobAdd} />
+      <Route exact path="/job-approve" component={JobApprove} />
+      <Route path="/jobseekers" component={JobseekerList} />
+      <Route path="/employers" component={EmployerList} />
+      <Route path="/personnels" component={PersonnelList} />
     </div>
   );
 }

@@ -5,3 +5,15 @@
 .ui.main.container{
   margin-top: 50px;
 }
+
+.form-group{
+  margin-bottom: 20px;
+}
+
+.ui.label.label{
+  margin-bottom: 5px;
+}
+
+.ui.button.button{
+  margin-bottom: 60px;
+}
